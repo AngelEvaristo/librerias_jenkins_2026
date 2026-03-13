@@ -4,13 +4,11 @@ def call(String project = 'Prueba', boolean usoscripts = true) {
             checkout scm
         }
 
-        stage ('Restore') {
-            powershell "${project}"
+        stage ('Restore') {            
             bat 'dotnet restore'
         }
 
         stage ('build') {
-            powershell "${usoscripts}"
             bat 'dotnet build'
         }
 
